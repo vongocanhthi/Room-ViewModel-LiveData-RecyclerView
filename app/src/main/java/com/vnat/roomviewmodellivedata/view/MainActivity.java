@@ -2,7 +2,6 @@ package com.vnat.roomviewmodellivedata.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +19,6 @@ import com.vnat.roomviewmodellivedata.adapter.NoteAdapter;
 import com.vnat.roomviewmodellivedata.model.Note;
 import com.vnat.roomviewmodellivedata.viewmodel.NoteViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -59,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                
+
                 return false;
             }
 
@@ -68,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 noteViewModel.deleteNote(noteAdapter.getNodeAt(viewHolder.getAdapterPosition()));
                 Toast.makeText(MainActivity.this, "Delete Success", Toast.LENGTH_SHORT).show();
             }
+
 
         });
     }
@@ -87,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Add Success", Toast.LENGTH_SHORT).show();
             }
         });
+
 
     }
 

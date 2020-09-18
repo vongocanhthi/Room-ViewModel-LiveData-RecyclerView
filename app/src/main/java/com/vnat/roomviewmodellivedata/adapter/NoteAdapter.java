@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,11 +32,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHoder>
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NoteViewHoder holder, int position) {
-        Note note = noteList.get(position);
+    public void onBindViewHolder(@NonNull NoteViewHoder holder, final int position) {
+        final Note note = noteList.get(position);
         holder.txtTitle.setText(note.getTitle());
         holder.txtDescription.setText(note.getDescription());
-
     }
 
     @Override
@@ -49,23 +47,17 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHoder>
         return noteList.get(position);
     }
 
-    class NoteViewHoder extends RecyclerView.ViewHolder {
+    static class NoteViewHoder extends RecyclerView.ViewHolder {
         @BindView(R.id.txtTitle)
         TextView txtTitle;
         @BindView(R.id.txtDescription)
         TextView txtDescription;
 
-        public NoteViewHoder(@NonNull View itemView) {
+        public NoteViewHoder(@NonNull final View itemView) {
             super(itemView);
 
             ButterKnife.bind(this, itemView);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(v.getContext(), noteList.get(getPosition()).getTitle(), Toast.LENGTH_SHORT).show();
-                }
-            });
         }
     }
 

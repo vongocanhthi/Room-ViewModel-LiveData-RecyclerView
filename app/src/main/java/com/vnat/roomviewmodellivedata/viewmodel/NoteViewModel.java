@@ -19,7 +19,6 @@ public class NoteViewModel extends AndroidViewModel {
         noteRepository = new NoteRepository(application);
     }
 
-
     public LiveData<List<Note>> getAllNote() {
         return noteRepository.getAllNote();
     }
